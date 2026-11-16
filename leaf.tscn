@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bmcwo7cl64qrl"]
+
+[ext_resource type="Script" uid="uid://dcwl2i6atem3p" path="res://stickman.gd" id="1_qihfy"]
+[ext_resource type="Texture2D" uid="uid://c41h5r2jlu4vk" path="res://redsticklulu.jpg" id="2_jiete"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w7gfb"]
+radius = 4.335494
+
+[node name="leaf" type="Area2D" unique_id=1945565329 groups=["stickman"]]
+script = ExtResource("1_qihfy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=339062401]
+position = Vector2(-8, 2.9526901)
+scale = Vector2(0.17476353, 0.2533556)
+texture = ExtResource("2_jiete")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1651876494]
+position = Vector2(-4.000002, 5.90539)
+rotation = -2.8049767
+scale = Vector2(10.880026, 8.998441)
+shape = SubResource("CircleShape2D_w7gfb")

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://onh7cyodnvsu"]
+
+[ext_resource type="Texture2D" uid="uid://bvch6k8ijqqfu" path="res://hatman-removebg-preview.png" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://b53kxi4t2j7es" path="res://player.gd" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://od7y0fk5mkqx" path="res://pickup_area.gd" id="1_lquwl"]
+[ext_resource type="PackedScene" uid="uid://bmcwo7cl64qrl" path="res://leaf.tscn" id="3_h2yge"]
+[ext_resource type="Texture2D" uid="uid://c41h5r2jlu4vk" path="res://redsticklulu.jpg" id="4_7mycd"]
+[ext_resource type="Script" uid="uid://ci3lpquht08k0" path="res://label.gd" id="5_7mycd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_emnl6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ufq5g"]
+radius = 21.810131
+
+[node name="Node2D" type="Node2D" unique_id=936121592]
+scale = Vector2(1, 1.0160198)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1031239712]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=371404992]
+modulate = Color(0.18431373, 1, 0.26666668, 1)
+position = Vector2(-278, 635.81433)
+rotation = -3.1415927
+scale = Vector2(7446.775, 6959.8286)
+mesh = SubResource("BoxMesh_emnl6")
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=261307744]
+position = Vector2(102.000015, 230.31046)
+scale = Vector2(0.9632504, 0.9621732)
+script = ExtResource("1_h2yge")
+
+[node name="HatmanRemovebgPreview2" type="Sprite2D" parent="Player" unique_id=1203526758]
+position = Vector2(1.038147, 1.0229034)
+scale = Vector2(0.3541896, 0.37351853)
+texture = ExtResource("1_0xm2m")
+
+[node name="PickupArea" type="Area2D" parent="Player" unique_id=45873199]
+position = Vector2(1.038208, 4.0917053)
+scale = Vector2(0.99999994, 1)
+script = ExtResource("1_lquwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PickupArea" unique_id=2130038977]
+position = Vector2(4.152638, 1.022919)
+scale = Vector2(1.7486976, 3.054678)
+shape = SubResource("CircleShape2D_ufq5g")
+
+[node name="HeldPerson" type="Sprite2D" parent="Player" unique_id=958129975]
+visible = false
+position = Vector2(16.610455, -78.76537)
+rotation = 1.5707964
+scale = Vector2(0.21062596, 0.2776627)
+texture = ExtResource("4_7mycd")
+
+[node name="leaf" parent="." unique_id=1945565329 instance=ExtResource("3_h2yge")]
+position = Vector2(580, 252.94781)
+
+[node name="leaf2" parent="." unique_id=1639717833 instance=ExtResource("3_h2yge")]
+position = Vector2(192, 463.57364)
+
+[node name="leaf3" parent="." unique_id=1851023866 instance=ExtResource("3_h2yge")]
+position = Vector2(443, 110.234055)
+
+[node name="leaf4" parent="." unique_id=853688699 instance=ExtResource("3_h2yge")]
+position = Vector2(859, 143.69797)
+
+[node name="Label" type="Label" parent="." unique_id=1729645659 groups=["score_ui"]]
+offset_top = 0.9842329
+offset_right = 96.0
+offset_bottom = 37.400845
+text = "Score : 0"
+script = ExtResource("5_7mycd")
+
+[connection signal="area_entered" from="Player/PickupArea" to="Player" method="_on_pickup_area_area_entered"]
